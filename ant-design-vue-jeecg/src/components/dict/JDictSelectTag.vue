@@ -23,7 +23,7 @@
       placeholder: String,
       triggerChange: Boolean,
       disabled: Boolean,
-      value: String,
+      value:String,
       type: String
     },
     data() {

@@ -114,7 +114,7 @@ public class SysUser implements Serializable {
      */
     @Excel(name = "删除状态", width = 15,dicCode="del_flag")
     @TableLogic
-    private String delFlag;
+    private Integer delFlag;
 
     /**
      * 工号，唯一键
@@ -156,7 +156,7 @@ public class SysUser implements Serializable {
     /**
      * 同步工作流引擎1同步0不同步
      */
-    private String activitiSync;
+    private Integer activitiSync;
 
 
 }

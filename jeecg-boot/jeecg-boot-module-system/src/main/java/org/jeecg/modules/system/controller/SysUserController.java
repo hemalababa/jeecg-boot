@@ -123,8 +123,6 @@ public class SysUserController {
 			user.setSalt(salt);
 			String passwordEncode = PasswordUtil.encrypt(user.getUsername(), user.getPassword(), salt);
 			user.setPassword(passwordEncode);
-			user.setStatus(1);
-			user.setDelFlag("0");
 			sysUserService.addUserWithRole(user, selectedRoles);
             sysUserService.addUserWithDepart(user, selectedDeparts);
 			result.success("添加成功！");
@@ -775,9 +773,7 @@ public class SysUserController {
 			user.setPassword(passwordEncode);
 			user.setEmail(email);
 			user.setPhone(phone);
-			user.setStatus(1);
-			user.setDelFlag(CommonConstant.DEL_FLAG_0.toString());
-			user.setActivitiSync(CommonConstant.ACT_SYNC_1);
+			user.setActivitiSync(1);
 			sysUserService.addUserWithRole(user,"ee8626f80f7c2619917b6236f3a7f02b");//默认临时角色 test
 			result.success("注册成功");
 		} catch (Exception e) {
@@ -787,8 +783,8 @@ public class SysUserController {
 	}
 
 	/**
-	 * 
-	 * @param 根据用户名或手机号查询用户信息
+	 * 根据用户名或手机号查询用户信息
+	 * @param
 	 * @return
 	 */
 	@GetMapping("/querySysUser")
@@ -928,8 +924,8 @@ public class SysUserController {
 		try {
 			//TODO 从查询效率上将不要用mp的封装的page分页查询 建议自己写分页语句
 			LambdaQueryWrapper<SysUser> query = new LambdaQueryWrapper<SysUser>();
-			query.eq(SysUser::getActivitiSync, "1");
-			query.eq(SysUser::getDelFlag,"0");
+			query.eq(SysUser::getActivitiSync, 1);
+			query.eq(SysUser::getDelFlag,0);
 			query.and(i -> i.like(SysUser::getUsername, keyword).or().like(SysUser::getRealname, keyword));
 			
 			Page<SysUser> page = new Page<>(pageNo, pageSize);

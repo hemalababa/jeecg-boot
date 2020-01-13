@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: dev-postgresql
 swagger:
   production: false
   basic:

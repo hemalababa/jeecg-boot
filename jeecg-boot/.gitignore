@@ -1,3 +1,9 @@
 /target/
 /.idea/
 *.iml
+*.class
+*.lst
+*.log
+logs/*
+*.html
+*.lock
